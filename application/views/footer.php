@@ -106,6 +106,24 @@
     $(function(){
       $('#customer').DataTable();
 
+$("#packageForm").validate({
+          rules: {
+            name: {
+              required: true
+            },
+            'services[]': {
+              required: true
+              
+            },
+            price: {
+              required: true,
+              number : true
+            },
+            discount : {
+              required : true,
+              number : true
+            }
+          }});
       $("#customerform").validate({
           rules: {
             name: {

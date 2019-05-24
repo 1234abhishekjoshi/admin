@@ -203,5 +203,44 @@ class Home extends CI_Controller {
 		}
 		echo json_encode(array('status'=>true, 'data'=>$rs));
 	}
+	public function packageDetail(){
+		$rs['data'] = $this->Common_model->getAll('packages');
+		$this->load->view('header');
+		$this->load->view('package_list',$rs);
+		$this->load->view('footer');
+	}
+	public function addPackage(){
+		$rs['data'] = $this->Common_model->getAll('services');
+		$this->load->view('header');
+		$this->load->view('add_package_form',$rs);
+		$this->load->view('footer');
+	}
+	public function packageSubmit(){
+		$name  = $this->input->post('name');
+		$services_id = implode(',',$this->input->post('services'));
+		$price = $this->input->post('price');
+		$discount = $this->input->post('discount');
+		
+		$this->Common_model->insert('packages',array('name' => $name,'services_id'=> $services_id,'price'=>$price,'discount'=>$discount));
+		$this->session->set_flashdata('success','record added successfully');
+		redirect("home/addPackage");
+	}
+	public function updatePackage($id){
+		$rs['services'] = $this->Common_model->getAll('services');
+		$rs['data'] = $this->Common_model->getByCondition('packages',array('id'=>$id));
+		$this->load->view('header');
+		$this->load->view('update_package_form',$rs);
+		$this->load->view('footer');
+	}
+	public function packageUpdateSubmit(){
+		$name = $this->input->post('name');
+		$services_id = implode(',',$this->input->post('services'));
+		$price = $this->input->post('price');
+		$discount = $this->input->post('discount');
+		$id = $this->input->post('id');
+		$this->Common_model->updateWhere('packages',array('name'=>$name,'services_id'=>$services_id,'price'=>$price,'discount'=>$discount),array('id'=>$id));
+		$this->session->set_flashdata('success', 'record updated successfully');
+		redirect("home/updatePackage/".$id);
+	}
 	
 }

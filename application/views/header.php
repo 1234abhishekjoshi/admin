@@ -268,6 +268,7 @@ desired effect
         <li <?php if($this->uri->segment(2)=='viewCustomer' || $this->uri->segment(2)=='updateCustomer' || $this->uri->segment(2)=='addCustomer'){ echo 'class="active"'; }?>><a href="<?php echo base_url('home/viewCustomer'); ?>"><i class="fa fa-users"></i> <span>Customers</span></a></li>
         <li <?php if($this->uri->segment(2)=='services' || $this->uri->segment(2)=='updateService' || $this->uri->segment(2)=='addService'){ echo 'class="active"'; }?>><a href="<?php echo base_url('home/services') ?>"><i class="fa fa-shower"></i> <span>services</span></a></li>
         <li <?php if($this->uri->segment(2)=='customerDetail' || $this->uri->segment(2)=='updateService' || $this->uri->segment(2)=='addService'){ echo 'class="active"'; }?>><a href="<?php echo base_url('home/customerDetail') ?>"><i class="fa fa-user"></i> <span>Search Customer</span></a></li>
+        <li <?php if($this->uri->segment(2)=='packageDetail' || $this->uri->segment(2)=='updateService' || $this->uri->segment(2)=='addService'){ echo 'class="active"'; }?>><a href="<?php echo base_url('home/packageDetail') ?>"><i class="fa fa-folder"></i> <span>Packages</span></a></li>
         <!-- <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
